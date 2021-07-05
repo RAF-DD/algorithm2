@@ -1,0 +1,32 @@
+ALGORITHM elementdistinct
+VAR
+    tab1: ARRAY_OF_INTEGER[n];
+    tab2: ARRAY_OF_INTEGER[m];
+    sommeeld: INTEGER:=0;
+    i,j:INTEGER;
+    k:BOOLEAN:=false;
+BEGIN
+
+    FOR i FROM 0 TO n-1 STEP 1 DO
+    k := false;
+    FOR j FROM 0 TO m-1 STEP 1 DO
+    IF (tab1[i] == tab2[j]) THEN
+        k=vrai;
+    END_IF
+    END_FOR
+    IF (k==false) THEN
+        sommeeld:= sommeeld+tab1[i];
+    END_IF
+    FOR i FROM 0 TO m-1 STEP 1 DO
+    k := false;
+    FOR j FROM 0 TO n-1 STEP 1 DO
+    IF (tab2[i] == tab1[j]) THEN
+        k=vrai;
+    END_IF
+    END_FOR
+    IF (k==false) THEN
+        sommeeld:= sommeeld+tab2[i];
+    END_IF
+    
+    END_FOR
+END

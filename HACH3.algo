@@ -1,0 +1,34 @@
+ALGORITHM tabhachage
+VAR
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+    tab1: ARRAY_OF_INTEGER[n];
+    tab2: ARRAY_OF_INTEGER[m];
+    sommeeld:INTEGER:=0;
+    i,j:INTEGER;
+    count:INTEGER:=1;
+BEGIN
+htab : HASH_TABLE<INTEGER,INTEGER>;
+   FOR i FROM 0 TO n-1 STEP 1  DO
+   htab.insert(i,tab1[i]);
+   END_FOR
+   FOR j FROM 0 TO m-1 STEP 1  DO
+   htab.insert(j+n,tab2[j]);
+   END_FOR
+   Write(htab);
+   FOR i FROM 0 TO n-1 STEP 1 DO
+   FOR j FROM n TO n+m-1 STEP 1 DO
+     IF (htab.get(i) != htab.get(j)) THEN
+       sommeeld:= sommeeld+htab.get(i);
+       count++
+    END_IF
+    END_FOR   
+    END_FOR
+    FOR i FROM n TO n+m-1 STEP 1 DO
+    FOR j FROM 0 TO n-1 STEP 1 DO
+     IF (htab.get(i) != htab.get(j)) THEN
+       sommeeld:= sommeeld+htab.get(i);
+       count++
+    END_IF
+    END_FOR 
+    END_FOR
+END
